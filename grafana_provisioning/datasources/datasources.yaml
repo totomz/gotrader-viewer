@@ -2,6 +2,7 @@ apiVersion: 1
 
 datasources:
   - name: redislocal
+    uid: redislocal
     type: redis-datasource
     access: proxy
     orgId: 1
