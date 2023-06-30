@@ -12,6 +12,40 @@
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
         "type": "dashboard"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "iconColor": "blue",
+        "name": "Buy tags",
+        "target": {
+          "limit": 2000,
+          "matchAny": true,
+          "tags": [
+            "buy"
+          ],
+          "type": "tags"
+        }
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "iconColor": "red",
+        "name": "Sell",
+        "target": {
+          "limit": 2000,
+          "matchAny": true,
+          "tags": [
+            "sell"
+          ],
+          "type": "tags"
+        }
       }
     ]
   },
@@ -3180,8 +3214,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3257,8 +3290,8 @@
     ]
   },
   "time": {
-    "from": "2022-05-20T17:19:46.695Z",
-    "to": "2022-05-20T17:33:47.979Z"
+    "from": "2022-05-20T13:35:18.606Z",
+    "to": "2022-05-20T14:19:10.606Z"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -3276,7 +3309,7 @@
   },
   "timezone": "",
   "title": "SimplePsar",
-  "uid": "ed0d1c26-e1f2-41fc-9ff3-e61de5bee663",
-  "version": 3,
+  "uid": "s_simplepsar",
+  "version": 5,
   "weekStart": ""
 }
