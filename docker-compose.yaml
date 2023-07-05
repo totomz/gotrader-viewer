@@ -27,4 +27,5 @@ services:
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
 networks:
-  gotrader_redis: {}    
+  gotrader_redis:
+    external: true

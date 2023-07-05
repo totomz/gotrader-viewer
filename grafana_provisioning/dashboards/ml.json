@@ -1,0 +1,322 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "iconColor": "red",
+        "name": "sell",
+        "target": {
+          "limit": 2000,
+          "matchAny": true,
+          "tags": [
+            "sell"
+          ],
+          "type": "tags"
+        }
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "iconColor": "green",
+        "name": "buy",
+        "target": {
+          "limit": 2000,
+          "matchAny": false,
+          "tags": [
+            "buy"
+          ],
+          "type": "tags"
+        }
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 2,
+  "id": 3,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "redis-datasource",
+        "uid": "redislocal"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "gotrader.AMD.trades_buy"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "points"
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 15
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "gotrader.AMD.trades_sell"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "purple",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.drawStyle",
+                "value": "points"
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 15
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "gotrader.AMD.psar"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "points"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "super-light-purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "candleStyle": "candles",
+        "colorStrategy": "open-close",
+        "colors": {
+          "down": "red",
+          "up": "green"
+        },
+        "fields": {
+          "close": "gotrader.AMD.candle_close",
+          "high": "gotrader.AMD.candle_high",
+          "low": "gotrader.AMD.candle_low",
+          "open": "gotrader.AMD.candle_open"
+        },
+        "includeAllFields": true,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "mode": "candles"
+      },
+      "targets": [
+        {
+          "command": "ts.range",
+          "datasource": {
+            "type": "redis-datasource",
+            "uid": "redislocal"
+          },
+          "keyName": "gotrader.$symbol.candle_low",
+          "query": "",
+          "refId": "A",
+          "type": "timeSeries"
+        },
+        {
+          "command": "ts.range",
+          "datasource": {
+            "type": "redis-datasource",
+            "uid": "redislocal"
+          },
+          "hide": false,
+          "keyName": "gotrader.$symbol.candle_high",
+          "query": "",
+          "refId": "B",
+          "type": "timeSeries"
+        },
+        {
+          "command": "ts.range",
+          "datasource": {
+            "type": "redis-datasource",
+            "uid": "redislocal"
+          },
+          "hide": false,
+          "keyName": "gotrader.$symbol.candle_open",
+          "query": "",
+          "refId": "C",
+          "type": "timeSeries"
+        },
+        {
+          "command": "ts.range",
+          "datasource": {
+            "type": "redis-datasource",
+            "uid": "redislocal"
+          },
+          "hide": false,
+          "keyName": "gotrader.$symbol.candle_close",
+          "query": "",
+          "refId": "D",
+          "type": "timeSeries"
+        },
+        {
+          "command": "ts.range",
+          "datasource": {
+            "type": "redis-datasource",
+            "uid": "redislocal"
+          },
+          "hide": false,
+          "keyName": "gotrader.$symbol.psar",
+          "query": "",
+          "refId": "G",
+          "type": "timeSeries"
+        }
+      ],
+      "title": "Candles",
+      "type": "candlestick"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "AMD",
+          "value": "AMD"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "symbol",
+        "options": [
+          {
+            "selected": true,
+            "text": "AMD",
+            "value": "AMD"
+          }
+        ],
+        "query": "AMD",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "2023-01-03T13:48:03.347Z",
+    "to": "2023-01-03T16:30:07.715Z"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "ML Annotation",
+  "uid": "mlinsert",
+  "version": 6,
+  "weekStart": ""
+}
