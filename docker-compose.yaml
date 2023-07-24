@@ -22,7 +22,7 @@ services:
       - ${PWD}/grafana_provisioning/dashboards:/etc/grafana/provisioning/dashboards
     environment:
       - GF_LOG_MODE=console
-      - GF_INSTALL_PLUGINS=simpod-json-datasource,redis-datasource
+      - GF_INSTALL_PLUGINS=simpod-json-datasource,redis-datasource,grafana-simple-json-datasource
       - GF_AUTH_DISABLE_LOGIN_FORM=true
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
